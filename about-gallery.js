@@ -1,7 +1,7 @@
 (()=>{
  const gallery=document.querySelector('#about .about-gallery');
  if(!gallery)return;
- const phone=matchMedia('(max-width:680px)'),motion=matchMedia('(prefers-reduced-motion: reduce)');
+ const phone=matchMedia('(max-width:680px)'),motion=window.hongMingMotion;
  const originals=[...new Map([...gallery.querySelectorAll('.gallery-sequence:not([aria-hidden="true"]) img')].map(img=>[img.getAttribute('src'),img.cloneNode(true)])).values()];
  let started=false,ready=false,near=false,generation=0;
  const update=()=>gallery.classList.toggle('gallery-running',ready&&near&&!document.hidden&&!motion.matches);

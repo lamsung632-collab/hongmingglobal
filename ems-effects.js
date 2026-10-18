@@ -2,7 +2,7 @@
 'use strict';
 const page=document.querySelector('.ems-page'),items=[...document.querySelectorAll('[data-ems-reveal]')];
 if(!page||!('IntersectionObserver'in window))return;
-const media=matchMedia('(prefers-reduced-motion: reduce)');let observer;
+const media=window.hongMingMotion;let observer;
 function setup(){
  observer?.disconnect();page.classList.remove('ems-motion');
  if(media.matches)return;

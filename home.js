@@ -16,11 +16,11 @@
   document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a)openHash(a.hash);});
   window.addEventListener('hashchange',()=>openHash(location.hash));openHash(location.hash);
   const revealTargets=document.querySelectorAll('.section-heading,.energy-layout,.digital-grid,.project-card,.leader-section,.benefit-card,.services-heading,.service-rail,.about-gallery,.home-heading,.home-actions');
-  if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.08});revealTargets.forEach((el,i)=>{el.classList.add('scroll-reveal');el.style.setProperty('--reveal-delay',(i%3)*65+'ms');io.observe(el)});}
+  if('IntersectionObserver' in window&&!window.hongMingMotion.matches){const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.08});revealTargets.forEach((el,i)=>{el.classList.add('scroll-reveal');el.style.setProperty('--reveal-delay',(i%3)*65+'ms');io.observe(el)});}
   const rail=document.querySelector('.service-rail');
   if(rail&&!rail.classList.contains('services-grid')){
     const cards=[...rail.querySelectorAll('.service-card')];
-    const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+    const reduced=window.hongMingMotion;
     const toggle=document.querySelector('#service-autoplay');
     let enabled=!reduced.matches, direction=1, timer=0, hovering=false, focused=false, touching=false, visible=false;
     const words={vi:['Tạm dừng','Tự chạy','Giải pháp trước','Giải pháp tiếp theo'],en:['Pause','Auto play','Previous solutions','Next solutions'],'zh-Hant':['暫停','自動播放','上一個解決方案','下一個解決方案']};

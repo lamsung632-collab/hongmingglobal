@@ -1,5 +1,5 @@
 (function(){
-const $=s=>document.querySelector(s);let RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $=s=>document.querySelector(s);let RM=window.hongMingMotion.matches;
 /* ---------- particles → HM mark (brand yellow) ---------- */
 const PCFG={stiff:.01,damp:.9,gather:1.7,hold:4,explode:1.7,power:12,wander:.3,mR:160,mS:4,color:"#E9BE28",RES:260,gap:4};
 const PS={img:null,parts:[],targets:[],phase:"gather",t:0,last:0,running:false,vis:true,io:null,mouse:{x:-9999,y:-9999,on:false},W:0,H:0,center:{x:0,y:0},box:300,size:3};

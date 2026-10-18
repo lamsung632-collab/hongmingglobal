@@ -2,7 +2,7 @@
 'use strict';
 const grid=document.querySelector('#rfid-gallery .rfid-screens');
 if(!grid)return;
-const cards=[...grid.children],motion=matchMedia('(prefers-reduced-motion: reduce)');
+const cards=[...grid.children],motion=window.hongMingMotion;
 let frame=0,last=0;
 const values=cards.map(()=>1),clamp=n=>Math.max(0,Math.min(1,n));
 function render(time){

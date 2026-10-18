@@ -1,6 +1,6 @@
 (()=>{
 'use strict';
-const rows=[...document.querySelectorAll('.company-logo-row')],motion=matchMedia('(prefers-reduced-motion: reduce)');
+const rows=[...document.querySelectorAll('.company-logo-row')],motion=window.hongMingMotion;
 rows.forEach(row=>{
  const track=row.querySelector('.company-logo-track'),sequence=track.firstElementChild,originals=[...sequence.children];let visible=false,width=0;
  function sync(){track.style.animationPlayState=visible&&!document.hidden&&!motion.matches?'running':'paused';}

@@ -2,7 +2,7 @@
   'use strict';
   const flow=document.querySelector('.intro-value-flow');
   if(!flow)return;
-  const media=matchMedia('(prefers-reduced-motion: reduce)');
+  const media=window.hongMingMotion;
   const rows=[...flow.querySelectorAll('.intro-story')].map((row,index)=>({row,index,photo:row.querySelector('figure'),copy:row.querySelector(':scope > div'),value:1,target:1}));
   let frame=0,progress=1,targetProgress=1;
   const clamp=v=>Math.min(1,Math.max(0,v));
