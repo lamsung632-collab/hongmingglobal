@@ -16,16 +16,18 @@
   for(let y=0;y<sample.height;y+=4)for(let x=0;x<sample.width;x+=4){
    if(data[(y*sample.width+x)*4+3]>60){
     const tx=width/2+(x/sample.width-.5)*dw,ty=height/2+(y/sample.height-.5)*dh;
-    targets.push({tx,ty,x:Math.random()*width,y:Math.random()*height,vx:0,vy:0});
+    const i=(y*sample.width+x)*4,color=`rgb(${data[i]},${data[i+1]},${data[i+2]})`;
+    targets.push({tx,ty,color,x:Math.random()*width,y:Math.random()*height,vx:0,vy:0});
    }
   }
   particles=targets;phase='gather';elapsed=0;ready=particles.length>0;
   if(ready){draw();logo.classList.add('is-ready');sync();}
  }
  function draw(){
-  ctx.clearRect(0,0,width,height);ctx.fillStyle='#E9BE28';
+  ctx.clearRect(0,0,width,height);
+  if(phase==='hold'){const dw=width*.85,dh=dw*image.naturalHeight/image.naturalWidth;ctx.drawImage(image,(width-dw)/2,(height-dh)/2,dw,dh);return;}
   const radius=Math.max(1,(width*.85/128*4)*.34);
-  ctx.beginPath();for(const p of particles){ctx.moveTo(p.x+radius,p.y);ctx.arc(p.x,p.y,radius,0,Math.PI*2);}ctx.fill();
+  for(const p of particles){ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,radius,0,Math.PI*2);ctx.fill();}
  }
  function loop(now){
   frame=0;if(!visible||document.hidden||!ready)return;
